@@ -1,0 +1,59 @@
+import React,{useState} from "react";
+import "./Boo.css";
+
+.inp{
+    display:none
+  }
+  .inpt{
+    display:inline
+  }
+  
+  
+
+const App = () =>{
+  const [sdata,setSdata] = useState("inp");
+  const [userData,setuserData] = useState("");
+  const [arr,setArr] = useState([]);
+
+  const data = () =>{
+      alert(`hellow`)
+      setSdata("inpt")
+  };
+
+  const take = () =>{
+    
+    setArr([userData,...arr]);
+    console.log(arr);
+
+  }
+  return(
+      <>
+      <h3>Hellow everyone</h3>
+      <label for="cars">Choose a car:</label><br></br>
+        <button type="button" class="btn btn-info" onClick={()=>data()}>Click me</button>
+           <div className= {sdata}>
+              <input type ="text" placeholder ="add somthing"
+                value = {userData} onChange = {(e) => setuserData(e.target.value)}></input>
+                <button type="button" class="btn btn-success" onClick = {() => take() }>Success</button>
+            </div>
+            <br></br><br></br>
+             <select name="cars" id="cars">
+            
+             { arr.map((elem) =>{
+                 return(
+                   <>
+                        <option>{elem}</option>
+                   </>
+                 )
+               })
+             }  
+         </select>
+      
+      </>
+
+
+
+  )
+}
+
+export default App;
